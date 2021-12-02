@@ -1,0 +1,29 @@
+html {
+    background-color: #e7f1f8 ; /*blue lighten-3*/
+}
+
+main {
+    flex: 1 0 auto
+}
+
+/* Nav bar */
+nav {
+    background-color: #014077;  /*blue darken-1*/
+}
+nav img {
+    height: 3em;
+    vertical-align: middle;
+    margin: 0 .5em;
+}
+
+.nav-title {
+    color:#12202b;
+    display: inline-block;
+}
+
+nav .btn, .sidenav .btn {
+    background-color: #d84315; /*deep-orange darken-3*/
+}
+nav .btn:hover, .sidenav .btn:hover{
+    background-color: #f4511e; /*deep-orange darken-1*/
+}
