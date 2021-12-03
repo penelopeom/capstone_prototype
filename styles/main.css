@@ -2,23 +2,20 @@ html {
     background-color: #e7f1f8 ; /*blue lighten-3*/
 }
 
-main {
-    flex: 1 0 auto
-}
-
 /* Nav bar */
 nav {
     background-color: #014077;  /*blue darken-1*/
 }
+
 nav img {
-    height: 3em;
-    vertical-align: middle;
-    margin: 0 .5em;
+    left: 200px;
+    height: 5em;
+    /*vertical-align: middle;*/
+    /*margin: 0 .5em;*/
 }
 
 .nav-title {
-    color:#12202b;
-    display: inline-block;
+    color:#ffffff;
 }
 
 nav .btn, .sidenav .btn {
