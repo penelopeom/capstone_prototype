@@ -2,10 +2,13 @@
     padding-top: 13px;
     padding-left: 187px;
     font-family: 'Times New Roman', Times, serif;
+    max-width: fit-content;
 }
 
 #page_title {
-    color: #001d36;
+    color: white;
+    background-color: #02315a;
+    padding: 2%;
 }
 
 #button {
@@ -16,4 +19,9 @@
 
 #button_padding {
     padding-bottom: 6px;
+}
+
+.buttons {
+    padding: 2%;
+    background-color: #cae4f7;
 }
