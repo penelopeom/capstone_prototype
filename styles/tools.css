@@ -1,0 +1,19 @@
+.page_contents {
+    padding-top: 13px;
+    padding-left: 187px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#page_title {
+    color: #001d36;
+}
+
+#button {
+    background-color: rgb(184, 205, 224);
+    border-radius: 4px;
+    border: 1px solid #223445;
+}
+
+#button_padding {
+    padding-bottom: 6px;
+}

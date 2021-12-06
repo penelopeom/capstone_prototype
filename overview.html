@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="/styles/main.css">
         <link rel="stylesheet" href="/styles/tab.css">
         <link rel="stylesheet" href="/styles/icons.css">
+        <link rel="stylesheet" href="/styles/tools.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,7 +23,7 @@
 
         <!-- Page specific CSS -->
     </head>
-    <body>
+    <body style="background-color: #e7f1f8;">
         <header>
             <nav>
                 <div class="nav-title">
@@ -31,7 +32,7 @@
                     </div>
                 </div>
                 <div class="nav-title">
-                    <h5 style="padding-top: 10px; font-size: 30px;">NJCCIC Cyber Analyst Toolkit<h5>
+                    <h5 id="move">NJCCIC Cyber Analyst Toolkit<h5>
                  </div>
             </nav>
         </header>
@@ -42,5 +43,21 @@
             <button class="tablinks" onclick="location.href='/tools/socials.html'">socials <img src="/images/socials.png" width="20" height="20"></button>
             <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
           </div>
+
+        <div class="page_contents">
+            <h5 id="page_title"><b>NJCCIC Cyber Analyst Toolkit</b></h5>
+
+            <form action="/action_page.php">
+                <label for="address">IP Address</label>
+                <input type="text" id="address" name="address">
+                <input id="button" type="submit">
+            </form><br><br>
+
+            <form action="/action_page.php">
+                <label for="myfile">Select a file:</label><br>
+                <input id="button_padding" type="file" id="myfile" name="myfile"><br>
+                <input id="button" type="submit">
+            </form>
+        </div>
     </body>
 </html>

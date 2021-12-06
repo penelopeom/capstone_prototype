@@ -21,9 +21,13 @@ nav img {
 }
 
 .nav-title {
-    padding-left: 5px;
     display: inline-block;
+}
+
+#move {
+    padding-left: 5px;
     font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
     color:#ffffff;
 }
 
