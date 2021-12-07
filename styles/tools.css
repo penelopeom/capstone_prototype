@@ -1,6 +1,7 @@
 .page_contents {
     padding-top: 13px;
-    padding-left: 187px;
+    /*padding-left: 187px;*/
+    padding-left: 16%;
     font-family: 'Times New Roman', Times, serif;
     max-width: fit-content;
 }
