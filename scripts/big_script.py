@@ -16,16 +16,19 @@ myresult = mycursor.fetchall()
 
 for x in myresult: # pretend the scripts genuinely exist
     print(x)
-    type = x[0].strip()
+    type = x[1].strip()
+    print(type)
 
-    if type.equals("contact"):
-        os.system("python3 contact.py")
-    elif type.equals("geolocation"):
-        os.system("python3 geolocation.py")
-    elif type.equals("nslookup"):
-        os.system("python3 nslookup.py")
-    elif type.equals("overview"):
-        os.system("python3 overview.py")
-    elif type.equals("socials"):
-        os.system("python3 socials.py")
+    if type == "contact":
+        os.system("python3 scripts/contact.py")
+    elif type == "geolocation":
+        os.system("python3 scripts/geolocation.py")
+    elif type  == "nslookup":
+        os.system("python3 scripts/nslookup.py")
+    elif type == "overview":
+        os.system("python3 scripts/overview.py")
+    elif type == "socials":
+        os.system("python3 scripts/socials.py")
+    else:
+        print("LLLLLL stoopid")
 
