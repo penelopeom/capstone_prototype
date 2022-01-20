@@ -10,7 +10,7 @@ mydb = mysql.connector.connect( # add proper credentials
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT type FROM table WHERE result=null")
+mycursor.execute("SELECT result_type FROM requests WHERE result is null")
 
 myresult = mycursor.fetchall()
 
