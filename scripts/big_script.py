@@ -10,19 +10,22 @@ mydb = mysql.connector.connect( # add proper credentials
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT request_type FROM requests WHERE result is null")
+mycursor.execute("SELECT request_id, request_type FROM requests WHERE result is null")
 
 myresult = mycursor.fetchall()
 
 for x in myresult: # pretend the scripts genuinely exist
-    if x.equals("contact"):
+    print(x)
+    type = x[0].strip()
+
+    if type.equals("contact"):
         os.system("python3 contact.py")
-    elif x.equals("geolocation"):
+    elif type.equals("geolocation"):
         os.system("python3 geolocation.py")
-    elif x.equals("nslookup"):
+    elif type.equals("nslookup"):
         os.system("python3 nslookup.py")
-    elif x.equals("overview"):
+    elif type.equals("overview"):
         os.system("python3 overview.py")
-    elif x.equals("socials"):
+    elif type.equals("socials"):
         os.system("python3 socials.py")
 
