@@ -1,4 +1,6 @@
 import os
+from pip._internal import main
+main(['install','mysql-connector-python'])
 import mysql.connector
 from whois import *
 
