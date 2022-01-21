@@ -1,6 +1,8 @@
 import os
 from pip._internal import main
 main(['install','mysql-connector-python'])
+from pip._internal import main
+main(['install', 'python-whois'])
 import mysql.connector
 from whois import *
 
