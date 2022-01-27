@@ -2,9 +2,10 @@ import os
 from pip._internal import main
 main(['install','mysql-connector-python'])
 from pip._internal import main
-main(['install', 'python-whois'])
+main(['install', 'ipwhois'])
+from ipwhois import IPWhois
+import whois_script
 import mysql.connector
-from whois import *
 
 mydb = mysql.connector.connect( # add proper credentials
   host="soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com",
@@ -27,10 +28,11 @@ for x in myresult: # pretend the scripts genuinely exist
 
     mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = " + str(id))
 
-    results = whois(address)
+    results = whois_script.whois_func(address)
     print(results)
 
-    mycursor.execute("UPDATE requests SET result = " + results + " WHERE request_id = " + str(id))
+    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = " + str(id))
+    mydb.commit()
 
 
 
