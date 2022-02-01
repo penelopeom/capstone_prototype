@@ -1,6 +1,3 @@
-
-// PHP code to establish connection
-// with the localserver
 <?php
   
 $user = 'njccic_usr';
@@ -28,17 +25,16 @@ $mysqli->close();
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <link rel="stylesheet" href="/styles/result_page.css">
     </head>
     <body>
         <section>
-            <h1>GeeksForGeeks</h1>
+            <h1>Search Results</h1>
             <!-- TABLE CONSTRUCTION-->
             <table>
                 <tr>
-                    <th>GFG UserHandle</th>
-                    <th>Practice Problems</th>
-                    <th>Coding Score</th>
-                    <th>GFG Articles</th>
+                    <th>IP Address</th>
+                    <th>Owner, Street Address</th>
                 </tr>
                 <!-- PHP CODE TO FETCH DATA FROM ROWS-->
                 <?php   // LOOP TILL END OF DATA 
@@ -48,8 +44,6 @@ $mysqli->close();
                 <tr>
                     <!--FETCHING DATA FROM EACH 
                         ROW OF EVERY COLUMN-->
-                    <td><?php echo $rows['request_id'];?></td>
-                    <td><?php echo $rows['request_type'];?></td>
                     <td><?php echo $rows['address'];?></td>
                     <td><?php echo $rows['result'];?></td>
                 </tr>
@@ -61,3 +55,14 @@ $mysqli->close();
     </body>
 
 </html>
+
+<script>
+    window.setInterval('refresh()', 10000);     
+    // Call a function every 10000 milliseconds 
+    // (OR 10 seconds).
+
+    // Refresh or reload page.
+    function refresh() {
+        window .location.reload();
+    }
+</script>
