@@ -29,7 +29,7 @@ $mysqli->close();
     <head>
         <meta charset="UTF-8">
 
-        <title>NJCAT | Contact</title>
+        <title>NJCAT | Results</title>
 
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
