@@ -1,13 +1,19 @@
+.result_page {
+    padding-top: 13px;
+    /*padding-left: 187px;*/
+    padding-left: 16%;
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 687px;
+}
+
 th{
     text-align: left;
-    border: 1px solid black;
+    padding-right: 30px;
 }
 
-table{
-    border: 1px solid black;
-}
 
 h1{
+    background-color: #02315a;
     color: #02315a;
     font-size: xx-large;
     font-family: 'Gill Sans', 'Gill Sans MT', 
@@ -15,8 +21,7 @@ h1{
 }
 
 td{
-    font-weight: bold;
-    border: 1px solid black;
-    padding: 10px;
     text-align: left;
+    padding-right: 30px;
+    padding-bottom: 30px;
 }
