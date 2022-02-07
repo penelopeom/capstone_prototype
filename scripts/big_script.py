@@ -4,14 +4,21 @@ main(['install','mysql-connector-python'])
 from pip._internal import main
 main(['install', 'ipwhois'])
 from ipwhois import IPWhois
+from dotenv import load_dotenv
 import whois_script
 import mysql.connector
 
+load_dotenv()
+HOST = os.environ.get("HOST")
+USER = os.environ.get("USER")
+PASSWORD = os.environ.get("PASSWORD")
+DATABASE = os.environ.get("DATABASE")
+
 mydb = mysql.connector.connect( # add proper credentials
-  host="soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com",
-  user="njccic_usr",
-  password="iJdf56*kf",
-  database="njccic_capstone"
+  host=HOST,
+  user=USER,
+  password=PASSWORD,
+  database=DATABASE
 )
 
 mycursor = mydb.cursor()
