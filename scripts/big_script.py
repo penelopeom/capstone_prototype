@@ -8,6 +8,7 @@ main(['install', 'python-dotenv'])
 from ipwhois import IPWhois
 from dotenv import load_dotenv
 import whois_script
+import nslookup_script
 import mysql.connector
 
 load_dotenv()
@@ -36,8 +37,12 @@ for x in myresult: # pretend the scripts genuinely exist
     address = x[2].strip()
 
     mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = " + str(id))
-
-    results = whois_script.whois_func(address)
+    
+    if (type == "whois"):
+      results = whois_script.whois_func(address)
+    elif (type == "nslookup"):
+      results = nslookup_script.nslookup_func(address)
+    
     print(results)
 
     mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = " + str(id))
