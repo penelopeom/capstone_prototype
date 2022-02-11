@@ -58,7 +58,7 @@ $mysqli->close();
                     </div>
                 </div>
                 <div class="nav-title">
-                    <a href="overview.html">
+                    <a href="overview.php">
                         <h5 id="move">NJCCIC Cyber Analyst Toolkit<h5>
                     </a>
                  </div>
