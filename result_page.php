@@ -100,6 +100,7 @@ $mysqli->close();
                         }
                     ?>
                 </table>
+                <button onclick="clearDatabase()">Clear Results</button>
             </div>
         </div>
     </body>
@@ -113,5 +114,29 @@ $mysqli->close();
     // Refresh or reload page.
     function refresh() {
         window .location.reload();
+    }
+
+    function clearDatabase() {
+        <?php
+        $user = 'njccic_usr';
+        $password = 'iJdf56*kf'; 
+        
+        $database = 'njccic_capstone'; 
+          
+        $servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+        $mysqli = new mysqli($servername, $user, 
+                        $password, $database);
+          
+        // Checking for connections
+        if ($mysqli->connect_error) {
+            die('Connect Error (' . 
+            $mysqli->connect_errno . ') '. 
+            $mysqli->connect_error);
+        }
+
+        $sql = "DELETE FROM requests;";
+        $result = $mysqli->query($sql);
+        $mysqli->close(); 
+        ?>
     }
 </script>
