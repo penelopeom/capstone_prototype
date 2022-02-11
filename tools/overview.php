@@ -1,3 +1,27 @@
+<?php
+  
+$user = 'njccic_usr';
+$password = 'iJdf56*kf'; 
+
+$database = 'njccic_capstone'; 
+  
+$servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+$mysqli = new mysqli($servername, $user, 
+                $password, $database);
+  
+// Checking for connections
+if ($mysqli->connect_error) {
+    die('Connect Error (' . 
+    $mysqli->connect_errno . ') '. 
+    $mysqli->connect_error);
+}
+  
+// SQL query to select data from database
+$sql = "SELECT * FROM requests ORDER BY request_id DESC ";
+$result = $mysqli->query($sql);
+$mysqli->close(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -52,13 +76,13 @@
             <h5 id="page_title"><b>NJCCIC Cyber Analyst Toolkit</b></h5>
 
             <div class="buttons">
-                <form action="/result_page.php">
+                <form action="input.php"method= "post">
                     <label for="address">IP Address</label>
                     <input type="text" id="address" name="address">
                     <input id="button" type="submit">
                 </form><br><br>
     
-                <form action="/result_page.php">
+                <form action="input.php" method="post">
                     <label for="myfile">Select a file:</label><br>
                     <input id="button_padding" type="file" id="myfile" name="myfile"><br>
                     <input id="button" type="submit">
