@@ -79,6 +79,7 @@ $mysqli->close();
                 <form action="input.php"method= "post">
                     <label for="address">IP Address</label>
                     <input type="text" id="address" name="address">
+                    <input type="hidden" name="request_type" value="whois">
                     <input id="button" type="submit">
                 </form><br><br>
     

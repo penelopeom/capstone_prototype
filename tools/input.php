@@ -9,7 +9,7 @@
     <center>
         <?php
   
-
+        session_start();
         $user = 'njccic_usr';
         $password = 'iJdf56*kf'; 
         $database = 'njccic_capstone'; 
@@ -28,10 +28,12 @@
           
         // Taking ip from the form data(input) and request type
         $ip =  $_REQUEST['address'];
-        $request_type = "whois";
+        $request_type = $_REQUEST['request_type'];;
           
         // Performing insert query execution
-        $sql = "INSERT INTO requests (request_type, address, result) VALUES ('$request_type', '$ip', '')";
+        $id = uniqid();
+        $_SESSION['id'] = $id;
+        $sql = "INSERT INTO requests (request_id, request_type, address, result) VALUES ('$id','$request_type', '$ip', '')";
           
         if(mysqli_query($conn, $sql)){
             echo "<h3>data stored in a database successfully." 

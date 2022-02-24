@@ -1,5 +1,6 @@
 <?php
   
+session_start();
 $user = 'njccic_usr';
 $password = 'iJdf56*kf'; 
 
@@ -17,7 +18,8 @@ if ($mysqli->connect_error) {
 }
   
 // SQL query to select data from database
-$sql = "SELECT * FROM requests ORDER BY request_id DESC ";
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM requests WHERE request_id = '$id'";
 $result = $mysqli->query($sql);
 $mysqli->close(); 
 ?>
