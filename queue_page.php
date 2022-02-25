@@ -1,9 +1,44 @@
+<?php
+session_start();
+$user = 'njccic_usr';
+$password = 'iJdf56*kf'; 
+$database = 'njccic_capstone'; 
+$servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+$mysqli = new mysqli($servername, $user, 
+                $password, $database);
+// Checking for connections
+if ($mysqli->connect_error) {
+    die('Connect Error (' . 
+    $mysqli->connect_errno . ') '. 
+    $mysqli->connect_error);
+}
+// SQL query to select data from database
+$id = $_SESSION['id'];
+$sql = "SELECT * FROM requests WHERE request_id = '$id'";
+$result = $mysqli->query($sql);
+if ($result->num_rows == 0) {
+  header("Location: /error_page.html");
+}
+$mysqli->close(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            window.setInterval('refresh()', 10000);     
+            // Call a function every 10000 milliseconds 
+            // (OR 10 seconds).
+
+            // Refresh or reload page.
+            function refresh() {
+                window.location.reload();
+            }
+        </script>
+
         <meta charset="UTF-8">
 
-        <title>NJCAT | Geolocation</title>
+        <title>NJCAT | In Queue...</title>
 
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -14,6 +49,7 @@
         <link rel="stylesheet" href="/styles/tab.css">
         <link rel="stylesheet" href="/styles/icons.css">
         <link rel="stylesheet" href="/styles/tools.css">
+        <link rel="stylesheet" href="/styles/result_page.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -48,22 +84,30 @@
             <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
           </div>
 
-        <div class="page_contents">
-            <h5 id="page_title"><b>Geolocation</b></h5>
+        <div class="result_page">
+            <h5 id="page_title"><b>In Queue...</b></h5>
 
-            <div class="buttons">
-                <form action="../input.php"method= "post">
-                    <label for="address">IP Address</label>
-                    <input type="text" id="address" name="address">
-                    <input type="hidden" name="request_type" value="geolocation">
-                    <input id="button" type="submit">
-                </form><br><br>
-    
-                <!-- <form action="../input.php" method="post">
-                    <label for="myfile">Select a file:</label><br>
-                    <input id="button_padding" type="file" id="myfile" name="myfile"><br>
-                    <input id="button" type="submit">
-                </form> -->
+            <div class="results">
+                <!-- TABLE CONSTRUCTION-->
+                <?php 
+                    while($rows=$result->fetch_assoc()) {
+                        if($rows['result'] == "") {
+                            echo "<h2>Request is in the Queue.</h2>";
+                        }
+                        elseif($rows['result'] == "Pending") {
+                            echo "<h2>Request is currently Pending.</h2>";
+                        }
+                        else {
+                            header("Location: /result_page.php");
+                        }
+                    }
+                ?>
+                <table>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </table>
             </div>
         </div>
     </body>

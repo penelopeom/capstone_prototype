@@ -20,6 +20,8 @@
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM requests WHERE request_id = '$id'";
     $result = $mysqli->query($sql);
+    $sql = "DELETE from requests WHERE request_id = '$id'";
+    $mysqli->query($sql);
     $mysqli->close(); 
 ?>
 
@@ -28,17 +30,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script>
-            window.setInterval('refresh()', 10000);     
-            // Call a function every 10000 milliseconds 
-            // (OR 10 seconds).
-
-            // Refresh or reload page.
-            function refresh() {
-                window.location.reload();
-            }
-        </script>
-
         <meta charset="UTF-8">
 
         <title>NJCAT | Results</title>
@@ -110,6 +101,7 @@
                     </tr>
                     <?php
                         }
+
                     ?>
                 </table>
             </div>

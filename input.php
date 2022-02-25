@@ -48,7 +48,7 @@
 
         // Close connection
         mysqli_close($conn);
-        header("Location: /result_page.php");
+        header("Location: /queue_page.php");
         ?>
     </center>
 </body>

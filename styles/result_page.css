@@ -3,7 +3,8 @@
     /*padding-left: 187px;*/
     padding-left: 16%;
     font-family: 'Times New Roman', Times, serif;
-    max-width: max-content;
+    /*max-width: max-content;*/
+    max-width: 500px;
 }
 
 th{
@@ -26,6 +27,6 @@ td{
     padding-bottom: 30px;
 }
 
-.results{
+.results {
     background-color: #cae4f7;
 }
