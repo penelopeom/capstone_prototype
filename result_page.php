@@ -1,27 +1,26 @@
 <?php
-  
-session_start();
-$user = 'njccic_usr';
-$password = 'iJdf56*kf'; 
+    session_start();
+    $user = 'njccic_usr';
+    $password = 'iJdf56*kf'; 
 
-$database = 'njccic_capstone'; 
-  
-$servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
-$mysqli = new mysqli($servername, $user, 
-                $password, $database);
-  
-// Checking for connections
-if ($mysqli->connect_error) {
-    die('Connect Error (' . 
-    $mysqli->connect_errno . ') '. 
-    $mysqli->connect_error);
-}
-  
-// SQL query to select data from database
-$id = $_SESSION['id'];
-$sql = "SELECT * FROM requests WHERE request_id = '$id'";
-$result = $mysqli->query($sql);
-$mysqli->close(); 
+    $database = 'njccic_capstone'; 
+    
+    $servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+    $mysqli = new mysqli($servername, $user, 
+                    $password, $database);
+    
+    // Checking for connections
+    if ($mysqli->connect_error) {
+        die('Connect Error (' . 
+        $mysqli->connect_errno . ') '. 
+        $mysqli->connect_error);
+    }
+    
+    // SQL query to select data from database
+    $id = $_SESSION['id'];
+    $sql = "SELECT * FROM requests WHERE request_id = '$id'";
+    $result = $mysqli->query($sql);
+    $mysqli->close(); 
 ?>
 
 
@@ -29,6 +28,17 @@ $mysqli->close();
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <script>
+            window.setInterval('refresh()', 10000);     
+            // Call a function every 10000 milliseconds 
+            // (OR 10 seconds).
+
+            // Refresh or reload page.
+            function refresh() {
+                window.location.reload();
+            }
+        </script>
+
         <meta charset="UTF-8">
 
         <title>NJCAT | Results</title>
@@ -80,12 +90,12 @@ $mysqli->close();
         <div class="result_page">
             <h5 id="page_title"><b>Search Results</b></h5>
 
-            <div class="buttons">
+            <div class="results">
                 <!-- TABLE CONSTRUCTION-->
                 <table>
                     <tr>
                         <th>IP Address</th>
-                        <th>Owner, Street Address</th>
+                        <th>Results</th>
                     </tr>
                     <!-- PHP CODE TO FETCH DATA FROM ROWS-->
                     <?php   // LOOP TILL END OF DATA 
@@ -102,43 +112,7 @@ $mysqli->close();
                         }
                     ?>
                 </table>
-                <button onclick="clearDatabase()">Clear Results</button>
             </div>
         </div>
     </body>
 </html>
-
-<script>
-    window.setInterval('refresh()', 10000);     
-    // Call a function every 10000 milliseconds 
-    // (OR 10 seconds).
-
-    // Refresh or reload page.
-    function refresh() {
-        window .location.reload();
-    }
-
-    function clearDatabase() {
-        <?php
-        $user = 'njccic_usr';
-        $password = 'iJdf56*kf'; 
-        
-        $database = 'njccic_capstone'; 
-          
-        $servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
-        $mysqli = new mysqli($servername, $user, 
-                        $password, $database);
-          
-        // Checking for connections
-        if ($mysqli->connect_error) {
-            die('Connect Error (' . 
-            $mysqli->connect_errno . ') '. 
-            $mysqli->connect_error);
-        }
-
-        $sql = "DELETE FROM requests;";
-        $result = $mysqli->query($sql);
-        $mysqli->close(); 
-        ?>
-    }
-</script>

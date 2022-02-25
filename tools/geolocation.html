@@ -52,17 +52,18 @@
             <h5 id="page_title"><b>Geolocation</b></h5>
 
             <div class="buttons">
-                <form action="/result_page.php">
+                <form action="input.php"method= "post">
                     <label for="address">IP Address</label>
                     <input type="text" id="address" name="address">
+                    <input type="hidden" name="request_type" value="geolocation">
                     <input id="button" type="submit">
                 </form><br><br>
     
-                <form action="/result_page.php">
+                <!-- <form action="input.php" method="post">
                     <label for="myfile">Select a file:</label><br>
                     <input id="button_padding" type="file" id="myfile" name="myfile"><br>
                     <input id="button" type="submit">
-                </form>
+                </form> -->
             </div>
         </div>
     </body>
