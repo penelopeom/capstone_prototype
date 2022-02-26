@@ -19,8 +19,8 @@ def whois_func(address):
             username = res["nets"][0]['name']
             
             fullAddr = address + ", " + city + ", " + country
-            result += username + ", " + fullAddr + ". ";
+            result += username + ", " + fullAddr + "; ";
         else:
-            result += "NO RESULTS FOUND"
+            result += "NO RESULTS FOUND;"
 
     return result
