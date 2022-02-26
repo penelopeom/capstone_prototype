@@ -26,7 +26,7 @@ mydb = mysql.connector.connect( # add proper credentials
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT request_id, request_type, address FROM requests WHERE result is null")
+mycursor.execute("SELECT request_id, request_type, address FROM requests WHERE result = ''")
 
 myresult = mycursor.fetchall()
 
@@ -36,7 +36,7 @@ for x in myresult: # pretend the scripts genuinely exist
     type = x[1].strip()
     address = x[2].strip()
 
-    mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = " + str(id))
+    mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = \"" + id + "\"")
     
     if (type == "whois"):
       results = whois_script.whois_func(address)
@@ -45,7 +45,7 @@ for x in myresult: # pretend the scripts genuinely exist
     
     print(results)
 
-    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = " + str(id))
+    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\"")
     mydb.commit()
 
 

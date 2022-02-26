@@ -94,7 +94,7 @@ $mysqli->close();
                         if($rows['result'] == "") {
                             echo "<h2>Request is in the Queue.</h2>";
                         }
-                        elseif($rows['result'] == "Pending") {
+                        elseif($rows['result'] == "PENDING") {
                             echo "<h2>Request is currently Pending.</h2>";
                         }
                         else {
