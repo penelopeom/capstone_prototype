@@ -31,7 +31,7 @@
         // Performing insert query execution
         $id = uniqid();
         $_SESSION['id'] = $id;
-        $sql = "INSERT INTO requests (request_id, request_type, address, result) VALUES ('$id','$request_type', '$ip', '')";
+        $sql = "INSERT INTO requests (request_id, request_type, address, result, input_type) VALUES ('$id','$request_type', '$ip', '', 'file')";
           
         if(mysqli_query($conn, $sql)){
             echo "<h3>data stored in a database successfully." 
