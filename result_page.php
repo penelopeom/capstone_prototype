@@ -92,19 +92,51 @@
                     <?php   // LOOP TILL END OF DATA 
                         while($rows=$result->fetch_assoc())
                         {
+                            if($rows['input_type'] == 'single')
+                            {
                     ?>
-                    <tr>
-                        <!--FETCHING DATA FROM EACH 
-                            ROW OF EVERY COLUMN-->
-                        <td><?php echo $rows['address'];?></td>
-                        <td><?php echo $rows['result'];?></td>
-                    </tr>
+                            <tr>
+                                <!--FETCHING DATA FROM EACH 
+                                    ROW OF EVERY COLUMN-->
+                                <td><?php echo $rows['address'];?></td>
+                                <td><?php echo $rows['result'];?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </body>
+        </html>
                     <?php
+                            }
+                            elseif($rows['input_type'] == 'file')
+                            {
+                                $addresses = $rows['address'];
+                                $addr_arr = explode("\r\n", $addresses);
+                                $results = $rows['result'];
+                                $result_arr = explode("; ", $results);
+
+                                $final_arr = [];
+                                $counter = 0;
+
+                                foreach($addr_arr as $value) {
+                                    $arr = array($value, $result_arr[$counter]);
+                                    array_push($final_arr, $arr);
+                                    $counter++;
+                                }
+
+                                ob_clean();
+                                ob_start();
+                                header('Content-Type: text/csv');
+                                header('Content-Disposition: attachment; filename="results.csv"');
+                                header('Pragma: no-cache');    
+                                header('Expires: 0');
+
+                                $fp = fopen('php://output', 'w');
+
+                                foreach ($final_arr as $fields) {
+                                    fputcsv($fp, $fields);
+                                }
+                            }
                         }
 
                     ?>
-                </table>
-            </div>
-        </div>
-    </body>
-</html>
