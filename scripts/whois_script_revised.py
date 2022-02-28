@@ -26,7 +26,7 @@ def whois_func(address):
                 break
 
         if (response.decode() != ""):
-            result += response.decode()
+            result += response.decode() + ";"
         else:
             result += "NO RESULT FOUND; "
     

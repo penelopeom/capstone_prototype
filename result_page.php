@@ -113,7 +113,13 @@
                                 $addresses = $rows['address'];
                                 $addr_arr = explode("\r\n", $addresses);
                                 $results = $rows['result'];
-                                $result_arr = explode("; ", $results);
+                                $result_arr = explode(";", $results);
+
+                                $iterator = 0;
+                                foreach($result_arr as $item) {
+                                    $result_arr[$iterator] = trim($item);
+                                    $iterator++;
+                                }
 
                                 $final_arr = [];
                                 $counter = 0;

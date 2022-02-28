@@ -1,26 +1,37 @@
 import os
 from pip._internal import main
-main(['install', 'ipwhois'])
-from ipwhois import IPWhois
+import socket
+from datetime import datetime as dt
+import time
 
 def whois_func(address):
-    # if single IP, there will only be one element of the array after split
-    # if multiple IPs, it will convert them into an array
     addresses = address.split("\r\n")
-    result = ""
+    result =""
 
-    for IPaddress in addresses:
-        search = IPWhois(IPaddress)
-        res = search.lookup_whois()
-        if (res != ""):
-            address = res["nets"][0]['address']
-            city = res["nets"][0]['city']
-            country = res["nets"][0]['country']
-            username = res["nets"][0]['name']
-            
-            fullAddr = address + ", " + city + ", " + country
-            result += username + ", " + fullAddr + "; ";
+    for ip in addresses:
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(("whois.arin.net", 43))
+        s.send(('n ' + ip + '\r\n').encode())
+
+        response = b""
+
+        # setting time limit in seconds
+        startTime = time.mktime(dt.now().timetuple())
+        timeLimit = 3
+        while True:
+            elapsedTime = time.mktime(dt.now().timetuple()) - startTime
+            data = s.recv(4096)
+            response += data
+            if (not data) or (elapsedTime >= timeLimit):
+                break
+
+        if (response.decode() != ""):
+            text = response.decode()
+            text = text.split("")
+            result += response.decode()
         else:
-            result += "NO RESULTS FOUND;"
-
+            result += "NO RESULT FOUND; "
+    
+    
+    s.close()
     return result
