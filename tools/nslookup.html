@@ -1,20 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <script>
-            window.setInterval('refresh()', 10000);     
-            // Call a function every 10000 milliseconds 
-            // (OR 10 seconds).
-
-            // Refresh or reload page.
-            function refresh() {
-                window.location.reload();
-            }
-        </script>
-
         <meta charset="UTF-8">
 
-        <title>NJCAT | Error Page</title>
+        <title>NJCCIC Cyber Analyst Toolkit</title>
 
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -25,7 +14,6 @@
         <link rel="stylesheet" href="/styles/tab.css">
         <link rel="stylesheet" href="/styles/icons.css">
         <link rel="stylesheet" href="/styles/tools.css">
-        <link rel="stylesheet" href="/styles/result_page.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -46,7 +34,7 @@
                     </div>
                 </div>
                 <div class="nav-title">
-                    <a href="/tools/overview.html">
+                    <a href="overview.html">
                         <h5 id="move">NJCCIC Cyber Analyst Toolkit<h5>
                     </a>
                  </div>
@@ -61,23 +49,23 @@
             <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
           </div>
 
-        <div class="result_page">
-            <h5 id="page_title"><b>Results</b></h5>
+        <div class="page_contents">
+            <h5 id="page_title"><b>nslookup</b></h5>
 
-            <div class="results">
-                <!-- TABLE CONSTRUCTION-->
-                <table>
-                    <tr>
-                        <th>Oops! Something went wrong.</th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <br>
-                            <br>
-                            <br>
-                        </th>
-                    </tr>
-                </table>
+            <div class="buttons">
+                <form action="../input.php"method= "post">
+                    <label for="address">IP Address</label>
+                    <input type="text" id="address" name="address">
+                    <input type="hidden" name="request_type" value="nslookup">
+                    <input id="button" type="submit">
+                </form><br><br>
+    
+                <form enctype="multipart/form-data" action="../file_input.php" method="post">
+                    <label for="myfile">Select a file:</label><br>
+                    <input name="myfile" id="button-padding" type="file"><br>
+                    <input type="hidden" name="request_type" value="nslookup">
+                    <input id="button" type="submit">
+                </form>
             </div>
         </div>
     </body>

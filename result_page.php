@@ -64,7 +64,7 @@
                     </div>
                 </div>
                 <div class="nav-title">
-                    <a href="overview.html">
+                    <a href="/tools/overview.html">
                         <h5 id="move">NJCCIC Cyber Analyst Toolkit<h5>
                     </a>
                  </div>
@@ -73,6 +73,7 @@
 
         <div class="tab">
             <button class="tablinks" onclick="location.href='/tools/whois.html'">whois <img src="/images/whois.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='/tools/nslookup.html'">nslookup <img src="/images/website.png" width="20" height="20"></button>
             <button class="tablinks" onclick="location.href='/tools/geolocation.html'">geolocation <img src="/images/geolocation.png" width="20" height="20"></button>
             <button class="tablinks" onclick="location.href='/tools/socials.html'">socials <img src="/images/socials.png" width="20" height="20"></button>
             <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
@@ -99,7 +100,7 @@
                                 <!--FETCHING DATA FROM EACH 
                                     ROW OF EVERY COLUMN-->
                                 <td><?php echo $rows['address'];?></td>
-                                <td><?php echo $rows['result'];?></td>
+                                <td><?php echo trim($rows['result'], "; ");?></td>
                             </tr>
                         </table>
                     </div>

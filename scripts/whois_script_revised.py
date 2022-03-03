@@ -57,4 +57,4 @@ def whois_func(address):
 
     
     s.close()
-    return result
+    return result.strip()

@@ -7,7 +7,6 @@ from pip._internal import main
 main(['install', 'python-dotenv'])
 from ipwhois import IPWhois
 from dotenv import load_dotenv
-import whois_script
 import whois_script_revised
 import nslookup_script
 import mysql.connector
@@ -43,6 +42,17 @@ for x in myresult: # pretend the scripts genuinely exist
       results = whois_script_revised.whois_func(address)
     elif (type == "nslookup"):
       results = nslookup_script.nslookup_func(address)
+    elif (type == "all"):
+      whois = (whois_script_revised.whois_func(address)).strip()
+      whois_results = whois.split("\n;\n")
+      nslookup_results = ((nslookup_script.nslookup_func(address)).strip()).split("; ")
+      results = ""
+
+      for x in range(0, len(whois_results)):
+        if (x == len(whois_results) - 1):
+          results += whois_results[x].strip(";\n") + "\n" + nslookup_results[x].strip(";") + "; "
+        else:
+          results += whois_results[x].strip() + "\n" + nslookup_results[x].strip() + "; "
     
     print(results)
 
