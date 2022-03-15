@@ -1,15 +1,19 @@
 import os
+
 from pip._internal import main
 main(['install','mysql-connector-python'])
 from pip._internal import main
 main(['install', 'ipwhois'])
 from pip._internal import main
 main(['install', 'python-dotenv'])
+
 from ipwhois import IPWhois
 from dotenv import load_dotenv
-import whois_script_revised
-import nslookup_script
 import mysql.connector
+
+import whois_script
+import nslookup_script
+import geolocation_script
 
 load_dotenv()
 HOST = os.environ.get("HOST")
@@ -39,11 +43,13 @@ for x in myresult: # pretend the scripts genuinely exist
     mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = \"" + id + "\"")
     
     if (type == "whois"):
-      results = whois_script_revised.whois_func(address)
+      results = whois_script.whois_func(address)
     elif (type == "nslookup"):
       results = nslookup_script.nslookup_func(address)
+    elif (type == "geolocation"):
+      results = geolocation_script.geolocation_func(address)
     elif (type == "all"):
-      whois = (whois_script_revised.whois_func(address)).strip()
+      whois = (whois_script.whois_func(address)).strip()
       whois_results = whois.split("\n;\n")
       nslookup_results = ((nslookup_script.nslookup_func(address)).strip()).split("; ")
       results = ""

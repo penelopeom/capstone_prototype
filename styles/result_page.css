@@ -4,7 +4,7 @@
     padding-left: 16%;
     font-family: 'Times New Roman', Times, serif;
     /*max-width: max-content;*/
-    max-width: 500px;
+    max-width: fit-content;
 }
 
 th{
