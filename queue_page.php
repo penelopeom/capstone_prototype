@@ -91,16 +91,22 @@ $mysqli->close();
             <div class="results">
                 <!-- TABLE CONSTRUCTION-->
                 <?php 
+                    $finished = True;
                     while($rows=$result->fetch_assoc()) {
                         if($rows['result'] == "") {
                             echo "<h2>Request is in the Queue.</h2>";
+                            $finished = False;
+                            break;
                         }
                         elseif($rows['result'] == "PENDING") {
                             echo "<h2>Request is currently Pending.</h2>";
+                            $finished = False;
+                            break;
                         }
-                        else {
-                            header("Location: /result_page.php");
-                        }
+                    }
+                    
+                    if ($finished) {
+                        header("Location: /result_page.php");
                     }
                 ?>
                 <table>

@@ -5,30 +5,28 @@ from datetime import datetime as dt
 import time
 
 def whois_func(address):
-    addresses = address.split("\r\n")
     result =""
 
-    for ip in addresses:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect(("whois.arin.net", 43))
-        s.send(('n ' + ip + '\r\n').encode())
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect(("whois.arin.net", 43))
+    s.send(('n ' + address + '\r\n').encode())
 
-        response = b""
+    response = b""
 
-        # setting time limit in seconds
-        startTime = time.mktime(dt.now().timetuple())
-        timeLimit = 3
-        while True:
-            elapsedTime = time.mktime(dt.now().timetuple()) - startTime
-            data = s.recv(4096)
-            response += data
-            if (not data) or (elapsedTime >= timeLimit):
-                break
+    # setting time limit in seconds
+    startTime = time.mktime(dt.now().timetuple())
+    timeLimit = 3
+    while True:
+        elapsedTime = time.mktime(dt.now().timetuple()) - startTime
+        data = s.recv(4096)
+        response += data
+        if (not data) or (elapsedTime >= timeLimit):
+            break
 
-        if (response.decode() != ""):
-            result += response.decode() + ";"
-        else:
-            result += "NO RESULT FOUND; "
+    if (response.decode() != ""):
+        result += response.decode()
+    else:
+        result += "NO RESULT FOUND"
     
     
     sheesh = """#

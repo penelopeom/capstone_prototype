@@ -91,8 +91,14 @@
                     </tr>
                     <!-- PHP CODE TO FETCH DATA FROM ROWS-->
                     <?php   // LOOP TILL END OF DATA 
+                        $addr_arr = [];
+                        $result_arr = [];
+                        $counter = 0;
+                        $type = '';
+
                         while($rows=$result->fetch_assoc())
                         {
+                            $type = $rows['input_type'];
                             if($rows['input_type'] == 'single')
                             {
                     ?>
@@ -111,38 +117,38 @@
                             }
                             elseif($rows['input_type'] == 'file')
                             {
-                                $addresses = $rows['address'];
-                                $addr_arr = explode("\r\n", $addresses);
-                                $results = $rows['result'];
-                                $result_arr = explode(";", $results);
+                                $address = $rows['address'];
+                                $addr_arr[$counter] = trim($address);
 
-                                $iterator = 0;
-                                foreach($result_arr as $item) {
-                                    $result_arr[$iterator] = trim($item);
-                                    $iterator++;
-                                }
+                                $table_results = $rows['result'];
+                                $result_arr[$counter] = trim($table_results);
+                                $counter++;
+                            }
+                        }
 
-                                $final_arr = [];
-                                $counter = 0;
+                        if($type == 'file') 
+                        {
+                            echo ("hello???");
+                            $final_arr = [];
+                            $count = 0;
 
-                                foreach($addr_arr as $value) {
-                                    $arr = array($value, $result_arr[$counter]);
-                                    array_push($final_arr, $arr);
-                                    $counter++;
-                                }
+                            foreach($addr_arr as $value) {
+                                $arr = array($value, $result_arr[$count]);
+                                array_push($final_arr, $arr);
+                                $count++;
+                            }
 
-                                ob_clean();
-                                ob_start();
-                                header('Content-Type: text/csv');
-                                header('Content-Disposition: attachment; filename="results.csv"');
-                                header('Pragma: no-cache');    
-                                header('Expires: 0');
+                            ob_clean();
+                            ob_start();
+                            header('Content-Type: text/csv');
+                            header('Content-Disposition: attachment; filename="results.csv"');
+                            header('Pragma: no-cache');    
+                            header('Expires: 0');
 
-                                $fp = fopen('php://output', 'w');
+                            $fp = fopen('php://output', 'w');
 
-                                foreach ($final_arr as $fields) {
-                                    fputcsv($fp, $fields);
-                                }
+                            foreach ($final_arr as $fields) {
+                                fputcsv($fp, $fields);
                             }
                         }
 

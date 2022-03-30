@@ -40,7 +40,7 @@ for x in myresult: # pretend the scripts genuinely exist
     type = x[1].strip()
     address = x[2].strip()
 
-    mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = \"" + id + "\"")
+    mycursor.execute("UPDATE requests SET result = 'PENDING' WHERE request_id = \"" + id + "\" and address = \"" + address + "\"")
     
     if (type == "whois"):
       results = whois_script.whois_func(address)
@@ -49,20 +49,14 @@ for x in myresult: # pretend the scripts genuinely exist
     elif (type == "geolocation"):
       results = geolocation_script.geolocation_func(address)
     elif (type == "all"):
-      whois = (whois_script.whois_func(address)).strip()
-      whois_results = whois.split("\n;\n")
-      nslookup_results = ((nslookup_script.nslookup_func(address)).strip()).split("; ")
-      results = ""
-
-      for x in range(0, len(whois_results)):
-        if (x == len(whois_results) - 1):
-          results += whois_results[x].strip(";\n") + "\n" + nslookup_results[x].strip(";") + "; "
-        else:
-          results += whois_results[x].strip() + "\n" + nslookup_results[x].strip() + "; "
+      whois_results = (whois_script.whois_func(address)).strip()
+      nslookup_results = nslookup_script.nslookup_func(address).strip()
+      geo_results = geolocation_script.geolocation_func(address)
+      results = whois_results + "; \n" + nslookup_results + "; \n" + geo_results
     
     print(results)
 
-    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\"")
+    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\" and address = \"" + address + "\"")
     mydb.commit()
 
 
