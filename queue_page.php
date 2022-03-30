@@ -26,7 +26,7 @@ $mysqli->close();
 <html lang="en">
     <head>
         <script>
-            window.setInterval('refresh()', 10000);     
+            window.setInterval('refresh()', 9700);     
             // Call a function every 10000 milliseconds 
             // (OR 10 seconds).
 
@@ -50,6 +50,7 @@ $mysqli->close();
         <link rel="stylesheet" href="/styles/icons.css">
         <link rel="stylesheet" href="/styles/tools.css">
         <link rel="stylesheet" href="/styles/result_page.css">
+        <link rel="stylesheet" href="/styles/queue_page.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -111,9 +112,11 @@ $mysqli->close();
                 ?>
                 <table>
                     <br>
-                    <br>
-                    <br>
-                    <br>
+                    <td style="text-align: center;">
+                        <div class="timer">
+                            <img src="/images/bar.gif" width="200" height="150">
+                        </div>
+                    </td>
                 </table>
             </div>
         </div>
