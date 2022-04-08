@@ -5,10 +5,14 @@ import requests
 from googlesearch import search
 import time
 import whois_script
+import geolocation_script
+
+# all us states 
+us_states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Washington DC', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 
 def contact_func(address):
     # Creating an instance
-    ownwer = whois_script.whois_func(address)
+    owner = whois_script.whois_func(address)
     driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 
     # Logging into LinkedIn
@@ -23,9 +27,12 @@ def contact_func(address):
 
     # driver.find_element_by_xpath("//button[@type='submit']").click()
 
-    # Opening Kunal's Profile
-    # paste the URL of Kunal's profile here
-    profile_url = getURL(owner)
+    location = geolocation_script.geolocation_func(address)
+    location.split(' ')
+
+    state = set(location) & set(us_states)
+
+    profile_url = getURL(owner, state)
 
     driver.get(profile_url)	 # this will open the link
 
