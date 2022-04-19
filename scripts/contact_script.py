@@ -1,11 +1,8 @@
 from pip._internal import main
+
 main(['install','bs4'])
-
-from pip._internal import main
-main(['requests','bs4'])
-
-from pip._internal import main
-main(['googlesearch','bs4'])
+main(['install','requests'])
+main(['install','googlesearch'])
 
 from bs4 import BeautifulSoup
 import time
