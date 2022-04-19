@@ -1,4 +1,12 @@
-import requests
+from pip._internal import main
+main(['install','bs4'])
+
+from pip._internal import main
+main(['requests','bs4'])
+
+from pip._internal import main
+main(['googlesearch','bs4'])
+
 from bs4 import BeautifulSoup
 import time
 import requests
