@@ -1,5 +1,11 @@
-from pip._internal import main
-main(['install','mysql-connector-python'])
+# from pip._internal import main
+# main(['install','mysql-connector-python'])
+
+import sys
+import subprocess
+
+subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
+
 import mysql.connector
 
 mydb = mysql.connector.connect(
