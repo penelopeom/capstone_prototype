@@ -1,5 +1,4 @@
 import os
-from pip._internal import main
 import socket
 from datetime import datetime as dt
 import time
