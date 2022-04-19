@@ -41,7 +41,7 @@ def contact_func(address):
     soup = BeautifulSoup(src, 'lxml')
 
     # finding overview section
-    overview = soup.find('span', {'dir': 'ltr','class': 'link-without-visited-state'}).getText(strip=True)
+    overview = soup.find('span', {'  dir': 'ltr','class': 'link-without-visited-state'}).getText(strip=True)
 
     web_loc = overview.findAll('a')
     website = web_loc.get_text()
