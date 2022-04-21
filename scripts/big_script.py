@@ -18,6 +18,7 @@ import mysql.connector
 import whois_script
 import nslookup_script
 import geolocation_script
+import contact_script
 
 load_dotenv()
 HOST = os.environ.get("HOST")
@@ -57,11 +58,14 @@ for x in myresult: # pretend the scripts genuinely exist
         results = nslookup_script.nslookup_func(address)
       elif (type == "geolocation"):
         results = geolocation_script.geolocation_func(address)
+      elif (type == "contact"):
+        results = contact_script.contact_func(address)
       elif (type == "all"):
         whois_results = (whois_script.whois_func(address)).strip()
         nslookup_results = nslookup_script.nslookup_func(address).strip()
         geo_results = geolocation_script.geolocation_func(address)
-        results = whois_results + "; \n" + nslookup_results + "; \n" + geo_results
+        contact_results = contact_script.contact_func(address)
+        results = whois_results + "; \n" + nslookup_results + "; \n" + geo_results + "; \n" + contact_results
       
     print(results)
 

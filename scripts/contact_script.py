@@ -60,7 +60,6 @@ def contact_func(address):
     state = (set(location) & set(us_states)).pop()
 
     profile_url = getURL(owner, state)
-    print(profile_url)
 
     # this will open the link
     src =  requests.get(profile_url).text
@@ -73,7 +72,5 @@ def contact_func(address):
     match_phone = re.findall(r'((?:\+\d{2}[-\.\s]??|\d{4}[-\.\s]??)?(?:\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}))', src)
 
     contact = getTenDigits(match_phone)
-    print(contact)
-        
-contact_func('12.106.168.50')
+    return contact
 
