@@ -13,12 +13,11 @@ subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'lxml'])
 # main(['install','googlesearch-python'])
 
 from bs4 import BeautifulSoup
-import time
 import requests
 from googlesearch import search
-import time
 import whois_script
 import geolocation_script
+import re
 
 # all us states 
 us_states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'NewHampshire', 'NewJersey', 'NewMexico', 'NewYork', 'NorthCarolina', 'NorthDakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'RhodeIsland', 'SouthCarolina', 'SouthDakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'WestVirginia', 'Wisconsin', 'Wyoming']
@@ -30,6 +29,19 @@ def getURL(companyName, State):
             return url
     except:
         return ''
+
+def getTenDigits(numbers):
+    digits = "0123456789"
+    count = 0 
+    for num in numbers:
+        for x in num:
+            if x in digits:
+                count+=1
+        if count == 10:
+            return num
+        else:
+            count = 0
+    return "no 10 digit nums"
 
 def contact_func(address):
 
@@ -48,25 +60,20 @@ def contact_func(address):
     state = (set(location) & set(us_states)).pop()
 
     profile_url = getURL(owner, state)
-    
+    print(profile_url)
 
-    # # this will open the link
-    # src =  requests.get(profile_url).content
+    # this will open the link
+    src =  requests.get(profile_url).text
 
-    
+    # getting page source to parse
+    soup = BeautifulSoup(src, 'lxml')
 
-    # # getting page source to parse
-    # soup = BeautifulSoup(src, 'lxml')
+    # finding overview section
+    # https://stackoverflow.com/a/3868861/15164646
+    match_phone = re.findall(r'((?:\+\d{2}[-\.\s]??|\d{4}[-\.\s]??)?(?:\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}))', src)
 
-    # # finding overview section
-    # overview = soup.find('span', {'  dir': 'ltr','class': 'link-without-visited-state'}).getText(strip=True)
-
-    # web_loc = overview.findAll('a')
-    # website = web_loc.get_text()
-
-    # src = requests.get(website).content
-    # contact = soup.findAll(text='contact')
-    # print(contact)
+    contact = getTenDigits(match_phone)
+    print(contact)
         
-contact_func('12.111.29.162')
+contact_func('12.106.168.50')
 
