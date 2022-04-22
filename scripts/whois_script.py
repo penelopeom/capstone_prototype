@@ -54,4 +54,11 @@ def whois_func(address):
 
     
     s.close()
-    return result.strip()
+    ret = result.strip()
+    retList = ret.split(" ")
+    x = 0
+    owner = ""
+    while not("-" in retList[x]):
+        owner += retList[x] + " "
+        x += 1
+    return owner

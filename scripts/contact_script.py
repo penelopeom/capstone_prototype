@@ -47,13 +47,7 @@ def contact_func(address):
 
     # creating driver
     owner = whois_script.whois_func(address)
-    ownerList = owner.split(" ")
-    x = 0
-    owner = ""
-    while not("-" in ownerList[x]):
-        owner += ownerList[x] + " "
-        x += 1
-    
+
     # parsing together search query
     location = geolocation_script.geolocation_func(address)
     location = location.replace(' ', '').split(',')
@@ -73,4 +67,3 @@ def contact_func(address):
 
     contact = getTenDigits(match_phone)
     return contact
-
