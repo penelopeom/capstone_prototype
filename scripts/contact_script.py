@@ -24,16 +24,23 @@ us_states = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado
 us_states_with_spaces = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming']
 
 def getURL(companyName, State):
-    try:
+    #try:
         term = ' '.join([companyName, State, "contact", "company"])
-        for url in search(term, num_results=1):
-            return url
-    except:
-        return ''
+        print(term)
+        urls=[]
+        for url in search(term, num_results=5):
+            print(url)
+            urls.append(url)
+        
+
+        return(urls[0])
+    #except:
+    #    print("bababbabababababooey")
+    #    return ''
 
 def getTenDigits(numbers):
-    digits = "0123456789"
     count = 0 
+    digits = "1234567890"
     for num in numbers:
         for x in num:
             if x in digits:
@@ -69,3 +76,5 @@ def contact_func(address):
 
     contact = getTenDigits(match_phone)
     return contact
+
+print(contact_func('12.150.236.18'))
