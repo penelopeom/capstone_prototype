@@ -5,11 +5,6 @@
 # from pip._internal import main
 # main(['install','geopy'])
 
-import sys
-import subprocess
-
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'geopy'])
-
 #import pandas as pd
 #import geopandas as gpd
 import geopy

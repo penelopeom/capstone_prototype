@@ -1,10 +1,4 @@
 import os
-import sys
-import subprocess
-
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'ipwhois'])
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'python-dotenv'])
 
 # from pip._internal import main
 # main(['install','mysql-connector-python'])

@@ -1,4 +1,3 @@
-import os
 import socket
 from datetime import datetime as dt
 import time
@@ -61,4 +60,5 @@ def whois_func(address):
     while not("-" in retList[x]):
         owner += retList[x] + " "
         x += 1
+        
     return owner
