@@ -104,10 +104,11 @@ $mysqli->close();
                             $finished = False;
                             break;
                         }
+                        
                     }
                     
                     if ($finished) {
-                        header("Location: /result_page.php");
+                        header("Location: /handling/result_page.php");
                     }
                 ?>
                 <table>
