@@ -53,14 +53,14 @@
             <h5 id="page_title"><b>nslookup</b></h5>
 
             <div class="buttons">
-                <form action="../input.php"method= "post">
+                <form action="../handling/input.php"method= "post">
                     <label for="address">IP Address</label>
                     <input type="text" id="address" name="address">
                     <input type="hidden" name="request_type" value="nslookup">
                     <input id="button" type="submit">
                 </form><br><br>
     
-                <form enctype="multipart/form-data" action="../file_input.php" method="post">
+                <form enctype="multipart/form-data" action="../handling/file_input.php" method="post">
                     <label for="myfile">Select a file:</label><br>
                     <input name="myfile" id="button-padding" type="file"><br>
                     <input type="hidden" name="request_type" value="nslookup">
