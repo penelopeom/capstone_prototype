@@ -67,4 +67,4 @@ def contact_func(address):
     match_phone = re.findall(r'((?:\+\d{2}[-\.\s]??|\d{4}[-\.\s]??)?(?:\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}))', src)
 
     contact = getTenDigits(match_phone)
-    return contact
+    return contact + " - " + profile_url
