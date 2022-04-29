@@ -93,6 +93,7 @@
                 <?php   // LOOP TILL END OF DATA 
                         $addr_arr = [];
                         $result_arr = [];
+                        $final_arr = [];
                         $counter = 0;
                         $type = '';
 
@@ -119,7 +120,7 @@
                                 $result_arr[$counter] = trim($table_results);
                                 $counter++;
 
-                                $final_arr = [];
+                                
 
                                 $count = 0;
                                 foreach($addr_arr as $value) {
@@ -134,6 +135,8 @@
                         }
                         
                         if($type == 'file') {
+                            $_SESSION['final_arr'] = $final_arr;
+
                     ?>
                             <tr>
                                 <td>File</td>

@@ -1,6 +1,8 @@
 <?php
-    include 'result_page.php';
+    session_start();
+    $final_arr = $_SESSION['final_arr'];
     $filename = $_REQUEST['filename'] . '.csv';
+    
     ob_clean();
     ob_start();
     header('Content-Type: text/csv');

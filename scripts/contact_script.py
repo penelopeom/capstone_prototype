@@ -68,5 +68,3 @@ def contact_func(address):
 
     contact = getTenDigits(match_phone)
     return contact
-
-print(contact_func('12.150.236.18'))
