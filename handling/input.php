@@ -37,7 +37,7 @@
           
         if(mysqli_query($conn, $sql)){
             echo "<h3>data stored in a database successfully." 
-                . " Please browse your localhost php my admin" 
+                . " Please browse your localhost phpMyAdmin" 
                 . " to view the updated data</h3>"; 
   
             echo nl2br("\n$request_type\n$ip");

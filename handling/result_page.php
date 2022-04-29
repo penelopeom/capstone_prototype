@@ -90,7 +90,7 @@
                         <th>Results</th>
                     </tr>
                     <!-- PHP CODE TO FETCH DATA FROM ROWS-->
-                    <?php   // LOOP TILL END OF DATA 
+                <?php   // LOOP TILL END OF DATA 
                         $addr_arr = [];
                         $result_arr = [];
                         $counter = 0;
@@ -99,23 +99,18 @@
                         while($rows=$result->fetch_assoc())
                         {
                             $type = $rows['input_type'];
-                            if($rows['input_type'] == 'single')
+                            if($type == 'single')
                             {
-                    ?>
+                ?>
                             <tr>
                                 <!--FETCHING DATA FROM EACH 
                                     ROW OF EVERY COLUMN-->
                                 <td><?php echo $rows['address'];?></td>
                                 <td><?php echo trim($rows['result'], "; ");?></td>
                             </tr>
-                        </table>
-                    </div>
-                </div>
-            </body>
-        </html>
-                    <?php
+                <?php
                             }
-                            elseif($rows['input_type'] == 'file')
+                            elseif($type == 'file')
                             {
                                 $address = $rows['address'];
                                 $addr_arr[$counter] = trim($address);
@@ -123,33 +118,33 @@
                                 $table_results = $rows['result'];
                                 $result_arr[$counter] = trim($table_results);
                                 $counter++;
+
+                                $final_arr = [];
+
+                                $count = 0;
+                                foreach($addr_arr as $value) {
+                                    $arr = array($value, $result_arr[$count]);
+                                    array_push($final_arr, $arr);
+                                    $count++;
+                                }
                             }
                         }
-
-                        if($type == 'file') 
-                        {
-                            echo ("hello???");
-                            $final_arr = [];
-                            $count = 0;
-
-                            foreach($addr_arr as $value) {
-                                $arr = array($value, $result_arr[$count]);
-                                array_push($final_arr, $arr);
-                                $count++;
-                            }
-
-                            ob_clean();
-                            ob_start();
-                            header('Content-Type: text/csv');
-                            header('Content-Disposition: attachment; filename="results.csv"');
-                            header('Pragma: no-cache');    
-                            header('Expires: 0');
-
-                            $fp = fopen('php://output', 'w');
-
-                            foreach ($final_arr as $fields) {
-                                fputcsv($fp, $fields);
-                            }
-                        }
-
                     ?>
+                    <tr>
+                        <td>File</td>
+                        <td>
+                            <form action="download.php" method="post">
+                            <label for="filename">Name Download:</label><br>
+                            <input type="text" id="filename" name="filename">
+                            <input type="hidden" name="final_arr" value=<?php $final_arr ?>>
+                            <input type="submit" name="submit" value="Download File" />
+                            </form>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+
