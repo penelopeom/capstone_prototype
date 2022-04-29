@@ -141,7 +141,6 @@
                                     <form action="download.php" method="post">
                                     <label for="filename">Name Download:</label><br>
                                     <input type="text" id="filename" name="filename">
-                                    <input type="hidden" name="final_arr" value=<?php $final_arr ?>>
                                     <input type="submit" name="submit" value="Download File" />
                                     </form>
                                 </td>
