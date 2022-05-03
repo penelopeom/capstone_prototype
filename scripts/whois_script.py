@@ -60,5 +60,8 @@ def whois_func(address):
     while not("-" in retList[x]):
         owner += retList[x] + " "
         x += 1
+
+    while owner.count("  ") > 0:
+        owner = owner.replace("  ", " ").strip()
         
     return owner
