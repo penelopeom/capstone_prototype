@@ -33,7 +33,8 @@ mycursor.execute("SELECT request_id, request_type, address FROM requests WHERE r
 
 myresult = mycursor.fetchall()
 
-for x in myresult: # pretend the scripts genuinely exist
+for x in myresult: 
+  try:
     print(x)
     id = x[0]
     type = x[1].strip()
@@ -58,13 +59,17 @@ for x in myresult: # pretend the scripts genuinely exist
         whois_results = (whois_script.whois_func(address)).strip()
         nslookup_results = nslookup_script.nslookup_func(address).strip()
         geo_results = geolocation_script.geolocation_func(address)
-        contact_results = contact_script.contact_func(address)
+        contact_results = contact_script.contact_func(address, whois_results, geo_results)
         results = whois_results + "; \n" + nslookup_results + "; \n" + geo_results + "; \n" + contact_results
       
     print(results)
+  except:
+    results = "Error thrown while accessing data."
 
-    mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\" and address = \"" + address + "\"")
-    mydb.commit()
+  mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\" and address = \"" + address + "\"")
+  mydb.commit()
+
+
 
 
 

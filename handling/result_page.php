@@ -113,21 +113,10 @@
                             }
                             elseif($type == 'file')
                             {
-                                $address = $rows['address'];
-                                $addr_arr[$counter] = trim($address);
-
-                                $table_results = $rows['result'];
-                                $result_arr[$counter] = trim($table_results);
-                                $counter++;
-
-                                
-
-                                $count = 0;
-                                foreach($addr_arr as $value) {
-                                    $arr = array($value, $result_arr[$count]);
-                                    array_push($final_arr, $arr);
-                                    $count++;
-                                }
+                                $address = trim($rows['address']);
+                                $table_results = trim($rows['result']);                                
+                                $arr = array($address, $table_results);
+                                array_push($final_arr, $arr);
                     ?>
 
                     <?php

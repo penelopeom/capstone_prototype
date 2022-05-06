@@ -41,7 +41,7 @@ def getTenDigits(numbers):
             return num
         else:
             count = 0
-    return "no 10 digit nums"
+    return "Unable to determine number."
 
 def contact_func(address):
 
@@ -50,6 +50,32 @@ def contact_func(address):
 
     # parsing together search query
     location = geolocation_script.geolocation_func(address)
+    location = location.replace(' ', '').split(',')
+    state = (set(location) & set(us_states)).pop()
+    state = us_states_with_spaces[us_states.index(state)]
+
+    profile_url = getURL(owner, state)
+
+    # this will open the link
+    src =  requests.get(profile_url).text
+
+    # getting page source to parse
+    soup = BeautifulSoup(src, 'lxml')
+
+    # finding overview section
+    # https://stackoverflow.com/a/3868861/15164646
+    match_phone = re.findall(r'((?:\+\d{2}[-\.\s]??|\d{4}[-\.\s]??)?(?:\d{3}[-\.\s]??\d{3}[-\.\s]??\d{4}|\(\d{3}\)\s*\d{3}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4}))', src)
+
+    contact = getTenDigits(match_phone)
+    return contact + " - " + profile_url
+
+def contact_func(address, whois, geolocation):
+
+    # creating driver
+    owner = whois
+
+    # parsing together search query
+    location = geolocation
     location = location.replace(' ', '').split(',')
     state = (set(location) & set(us_states)).pop()
     state = us_states_with_spaces[us_states.index(state)]
