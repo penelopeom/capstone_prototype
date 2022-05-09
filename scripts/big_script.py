@@ -32,7 +32,6 @@ mycursor = mydb.cursor()
 mycursor.execute("SELECT request_id, request_type, address FROM requests WHERE result = ''")
 
 myresult = mycursor.fetchall()
-
 for x in myresult: 
   try:
     print(x)
@@ -45,8 +44,10 @@ for x in myresult:
     mycursor.execute("SELECT result FROM requests WHERE address = \"" + address + "\" and request_type = \"" + type + "\" and request_id != \"" + id + "\"")
     savedResults = mycursor.fetchall()
     if (len(savedResults) > 0):
+        print("thinks we have previous results")
         results = savedResults[0][0]
     else: 
+      print("got into else")
       if (type == "whois"):
         results = whois_script.whois_func(address)
       elif (type == "nslookup"):
@@ -61,10 +62,12 @@ for x in myresult:
         geo_results = geolocation_script.geolocation_func(address)
         contact_results = contact_script.contact_func(address, whois_results, geo_results)
         results = whois_results + "; \n" + nslookup_results + "; \n" + geo_results + "; \n" + contact_results
-      
-    print(results)
+      else:
+        print("doesn't recognize type")
   except:
     results = "Error thrown while accessing data."
+
+  print(results)
 
   mycursor.execute("UPDATE requests SET result = \"" + results + "\" WHERE request_id = \"" + id + "\" and address = \"" + address + "\"")
   mydb.commit()

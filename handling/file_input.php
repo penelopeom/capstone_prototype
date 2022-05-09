@@ -42,17 +42,7 @@
         foreach($array as $ip) {
             $ip = trim($ip);
             $sql = "INSERT INTO requests (request_id, request_type, address, result, input_type) VALUES ('$id','$request_type', '$ip', '', 'file')";
-            
-            if(mysqli_query($conn, $sql)){
-                echo "<h3>data stored in a database successfully." 
-                    . " Please browse your localhost php my admin" 
-                    . " to view the updated data</h3>"; 
-    
-                echo nl2br("\n$request_type\n$ip");
-            } else{
-                echo "ERROR: Hush! Sorry $sql. " 
-                    . mysqli_error($conn);
-            }
+            mysqli_query($conn, $sql);
         }
 
         // Close connection
