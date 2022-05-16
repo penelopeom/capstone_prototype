@@ -16,5 +16,5 @@
         fputcsv($fp, $fields);
     }
 
-    readfile($filename);
+    # readfile($filename);
 ?>
