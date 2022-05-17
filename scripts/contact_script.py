@@ -26,9 +26,6 @@ def getURL(companyName, State):
         
 
         return(urls[0])
-    #except:
-    #    print("bababbabababababooey")
-    #    return ''
 
 def getTenDigits(numbers):
     count = 0 

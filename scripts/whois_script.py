@@ -27,7 +27,7 @@ def whois_func(address):
         result += "NO RESULT FOUND"
     
     
-    sheesh = """#
+    extra_characters = """#
 # ARIN WHOIS data and services are subject to the Terms of Use
 # available at: https://www.arin.net/resources/registry/whois/tou/
 #
@@ -37,8 +37,8 @@ def whois_func(address):
 # Copyright 1997-2022, American Registry for Internet Numbers, Ltd.
 #"""
 
-    while(result.find(sheesh) != -1):
-        result = result.replace(sheesh, "")
+    while(result.find(extra_characters) != -1):
+        result = result.replace(extra_characters, "")
 
     replace = result[result.find("AT&T"):]
     replace = replace[:replace.find("\n")]
