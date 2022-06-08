@@ -1,11 +1,11 @@
 <?php
     session_start();
-    $user = 'njccic_usr';
-    $password = 'iJdf56*kf'; 
+    $user = 'root';
+    $password = 'dapos&e7efE_rU@uphi#'; 
 
     $database = 'njccic_capstone'; 
     
-    $servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+    $servername='127.0.0.1';
     $mysqli = new mysqli($servername, $user, 
                     $password, $database);
     
@@ -20,8 +20,8 @@
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM requests WHERE request_id = '$id'";
     $result = $mysqli->query($sql);
-    $sql = "DELETE from requests WHERE request_id = '$id'";
-    $mysqli->query($sql);
+    # $sql = "DELETE from requests WHERE request_id = '$id'";
+    # $mysqli->query($sql);
     $mysqli->close(); 
 ?>
 
@@ -39,11 +39,11 @@
 
 
         <!-- Shared site-wide CSS  -->
-        <link rel="stylesheet" href="/styles/main.css">
-        <link rel="stylesheet" href="/styles/tab.css">
-        <link rel="stylesheet" href="/styles/icons.css">
-        <link rel="stylesheet" href="/styles/tools.css">
-        <link rel="stylesheet" href="/styles/result_page.css">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/tab.css">
+        <link rel="stylesheet" href="../styles/icons.css">
+        <link rel="stylesheet" href="../styles/tools.css">
+        <link rel="stylesheet" href="../styles/result_page.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -59,24 +59,24 @@
                 <div class="nav-title">
                     <div class="padding">
                         <a href="https://www.cyber.nj.gov/">
-                            <img src="/images/njccic.png">
+                            <img src="../images/njccic.png">
                         </a>
                     </div>
                 </div>
                 <div class="nav-title">
-                    <a href="/tools/overview.html">
+                    <a href="../tools/overview.html">
                         <h5 id="move">NJCCIC Cyber Analyst Toolkit<h5>
                     </a>
                  </div>
             </nav>
         </header>
 
-        <div class="tab">
-            <button class="tablinks" onclick="location.href='/tools/whois.html'">whois <img src="/images/whois.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/nslookup.html'">nslookup <img src="/images/website.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/geolocation.html'">geolocation <img src="/images/geolocation.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/socials.html'">socials <img src="/images/socials.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
+	<div class="tab">
+	    <button class="tablinks" onclick="location.href='../tools/overview.html'">overview <img src="../images/overview.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/whois.html'">whois <img src="../images/whois.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/nslookup.html'">nslookup <img src="../images/website.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/geolocation.html'">geolocation <img src="../images/geolocation.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/contact.html'">contact <img src="../images/contact.png" width="20" height="20"></button>
           </div>
 
         <div class="result_page">
@@ -146,4 +146,5 @@
         </div>
     </body>
 </html>
+
 

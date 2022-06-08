@@ -10,10 +10,10 @@
         <?php
   
         session_start();
-        $user = 'njccic_usr';
-        $password = 'iJdf56*kf'; 
+        $user = 'root';
+        $password = 'dapos&e7efE_rU@uphi#'; 
         $database = 'njccic_capstone'; 
-        $servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+        $servername='127.0.0.1';
         
         $conn = mysqli_connect($servername, $user, $password, $database);
           
@@ -47,7 +47,7 @@
 
         // Close connection
         mysqli_close($conn);
-        header("Location: /handling/queue_page.php");
+        header("Location: ../handling/queue_page.php");
         ?>
     </center>
 </body>

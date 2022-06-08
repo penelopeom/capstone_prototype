@@ -2,6 +2,10 @@ html {
     background-color: #e7f1f8 ; /*blue lighten-3*/
 }
 
+body {
+    overflow:hidden;
+}
+
 /* Nav bar */
 nav {
     background-color: #014077;  /*blue darken-1*/

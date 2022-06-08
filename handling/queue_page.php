@@ -1,9 +1,10 @@
 <?php
 session_start();
-$user = 'njccic_usr';
-$password = 'iJdf56*kf'; 
+
+$user = 'root';
+$password = 'dapos&e7efE_rU@uphi#'; 
 $database = 'njccic_capstone'; 
-$servername='soccerdb.calingaiy4id.us-east-2.rds.amazonaws.com';
+$servername='127.0.0.1';
 $mysqli = new mysqli($servername, $user, 
                 $password, $database);
 // Checking for connections
@@ -17,7 +18,7 @@ $id = $_SESSION['id'];
 $sql = "SELECT * FROM requests WHERE request_id = '$id'";
 $result = $mysqli->query($sql);
 if ($result->num_rows == 0) {
-  header("Location: /error_page.html");
+  header("Location: /capstone_prototype/handling/error_page.html");
 }
 $mysqli->close(); 
 ?>
@@ -45,12 +46,12 @@ $mysqli->close();
 
 
         <!-- Shared site-wide CSS  -->
-        <link rel="stylesheet" href="/styles/main.css">
-        <link rel="stylesheet" href="/styles/tab.css">
-        <link rel="stylesheet" href="/styles/icons.css">
-        <link rel="stylesheet" href="/styles/tools.css">
-        <link rel="stylesheet" href="/styles/result_page.css">
-        <link rel="stylesheet" href="/styles/queue_page.css">
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="../styles/tab.css">
+        <link rel="stylesheet" href="../styles/icons.css">
+        <link rel="stylesheet" href="../styles/tools.css">
+        <link rel="stylesheet" href="../styles/result_page.css">
+        <link rel="stylesheet" href="../styles/queue_page.css">
 
         <!-- Icons -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -66,7 +67,7 @@ $mysqli->close();
                 <div class="nav-title">
                     <div class="padding">
                         <a href="https://www.cyber.nj.gov/">
-                            <img src="/images/njccic.png">
+                            <img src="../images/njccic.png">
                         </a>
                     </div>
                 </div>
@@ -78,12 +79,12 @@ $mysqli->close();
             </nav>
         </header>
 
-        <div class="tab">
-            <button class="tablinks" onclick="location.href='/tools/whois.html'">whois <img src="/images/whois.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/nslookup.html'">nslookup <img src="/images/website.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/geolocation.html'">geolocation <img src="/images/geolocation.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/socials.html'">socials <img src="/images/socials.png" width="20" height="20"></button>
-            <button class="tablinks" onclick="location.href='/tools/contact.html'">contact <img src="/images/contact.png" width="20" height="20"></button>
+	<div class="tab">
+	    <button class="tablinks" onclick="location.href='../tools/overview.html'">overview <img src="../images/overview.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/whois.html'">whois <img src="../images/whois.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/nslookup.html'">nslookup <img src="../images/website.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/geolocation.html'">geolocation <img src="../images/geolocation.png" width="20" height="20"></button>
+            <button class="tablinks" onclick="location.href='../tools/contact.html'">contact <img src="../images/contact.png" width="20" height="20"></button>
           </div>
 
         <div class="result_page">
@@ -108,14 +109,14 @@ $mysqli->close();
                     }
                     
                     if ($finished) {
-                        header("Location: /handling/result_page.php");
+                        header("Location: /capstone_prototype/handling/result_page.php");
                     }
                 ?>
                 <table>
                     <br>
                     <td style="text-align: center;">
                         <div class="timer">
-                            <img src="/images/bar.gif" width="200" height="150">
+                            <img src="../images/bar.gif" width="200" height="150">
                         </div>
                     </td>
                 </table>

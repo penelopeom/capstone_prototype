@@ -57,11 +57,14 @@ def whois_func(address):
     retList = ret.split(" ")
     x = 0
     owner = ""
-    while not("-" in retList[x]):
+    while x < len(retList) and not("-" in retList[x]):
         owner += retList[x] + " "
         x += 1
 
     while owner.count("  ") > 0:
         owner = owner.replace("  ", " ").strip()
+
+    if (owner.strip() == ""):
+        owner = "No owner found"
         
     return owner

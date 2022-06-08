@@ -43,7 +43,7 @@ def getTenDigits(numbers):
             count = 0
     return "Unable to determine number."
 
-def contact_func(address):
+def contact_func_solo(address):
 
     # creating driver
     owner = whois_script.whois_func(address)
@@ -69,7 +69,7 @@ def contact_func(address):
     contact = getTenDigits(match_phone)
     return contact + " - " + profile_url
 
-def contact_func(address, whois, geolocation):
+def contact_func_all(address, whois, geolocation):
 
     # creating driver
     owner = whois
