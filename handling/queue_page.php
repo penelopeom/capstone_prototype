@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 $user = 'root';
 $password = 'dapos&e7efE_rU@uphi#'; 
 $database = 'njccic_capstone'; 
