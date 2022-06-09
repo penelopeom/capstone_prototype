@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 import os
 
-# from pip._internal import main
-# main(['install','mysql-connector-python'])
-# main(['install', 'ipwhois'])
-# main(['install', 'python-dotenv'])
-
 from ipwhois import IPWhois
 from dotenv import load_dotenv
 import mysql.connector

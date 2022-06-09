@@ -1,6 +1,4 @@
-# from pip._internal import main
-# main(['install','mysql-connector-python'])
-
+# this script checks if you have mysql installed and running properly :)
 import mysql.connector
 
 mydb = mysql.connector.connect(

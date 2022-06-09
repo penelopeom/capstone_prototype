@@ -1,12 +1,3 @@
-# from pip._internal import main
-# main(['install','pandas'])
-# from pip._internal import main
-# main(['install','geopandas'])
-# from pip._internal import main
-# main(['install','geopy'])
-
-#import pandas as pd
-#import geopandas as gpd
 import geopy
 from geopy.geocoders import Nominatim
 
