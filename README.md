@@ -1,3 +1,30 @@
-# capstone_prototype
-Prototype for our Senior Capstone Project (best capstone)
-By: Sarah Choi, Devin Crowley, and Penelope Om
+# NJCCIC Cyber Analyst Toolkit
+A toolkit to aid the New Jersey Cybersecurity and Communications Integration Cell (NJCCIC) in gathering information about vulnerable IP addresses
+
+## Installation and Setup
+Run `installations.py` in the `scripts` folder or manually install the following libraries:
+* mysql-connector-python
+* ipwhois
+* python-dotenv
+* bs4
+* requests
+* googlesearch-python
+* lxml
+* geopy
+
+We used an AWS EC2 server with LAMP set up. Detailed instructions can be found [here](link)
+
+Create a `.env` file with the following variables for the SQL database:
+```
+HOST="[sql_host_name]"
+USER="[sql_username]"
+PASSWORD="[sql_password]"
+DATABASE="[sql_database_name"
+```
+
+## Usage
+The user can navigate to the various tools by clicking the appropriate tabs on the sidebar. The tools have two main input methods:
+1. Single Input
+   1. The user pastes a single IP address into the box on the webpage. The results are printed on the following HTML page
+2. File Input
+   1. The user uploads a `.txt` file of IP addresses (separated by new lines). The results are outputted in a downloadable `.csv` file that the user is able to name
