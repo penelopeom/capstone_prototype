@@ -19,8 +19,14 @@ Create a `.env` file with the following variables for the SQL database:
 HOST="[sql_host_name]"
 USER="[sql_username]"
 PASSWORD="[sql_password]"
-DATABASE="[sql_database_name"
+DATABASE="[sql_database_name]"
 ```
+
+The database should use a schema as follows:
+
+![SQL Schema](schema.jpg)
+
+MySQL is recommended for setting up the database.
 
 ## Usage
 The user can navigate to the various tools by clicking the appropriate tabs on the sidebar. The tools have two main input methods:
