@@ -24,7 +24,7 @@ DATABASE="[sql_database_name]"
 
 The database should use a schema as follows:
 
-![SQL Schema](schema.jpg)
+![SQL Schema](schema.png)
 
 MySQL is recommended for setting up the database.
 
