@@ -12,7 +12,7 @@ Run `installations.py` in the `scripts` folder or manually install the following
 * lxml
 * geopy
 
-We used an AWS EC2 server with LAMP set up. Detailed instructions can be found [here](link)
+We used an AWS EC2 server with LAMP set up. Detailed instructions can be found [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-lamp-amazon-linux-2.html)
 
 Create a `.env` file with the following variables for the SQL database:
 ```
