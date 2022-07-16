@@ -1,5 +1,5 @@
 # NJCCIC Cyber Analyst Toolkit
-A toolkit to aid the New Jersey Cybersecurity and Communications Integration Cell (NJCCIC) in gathering information about vulnerable IP addresses
+A toolkit to aid the New Jersey Cybersecurity and Communications Integration Cell (NJCCIC) in gathering information about vulnerable IP addresses. [Link to demo](https://www.youtube.com/watch?v=BXNTtAZyELI)
 
 ## Installation and Setup
 Run `installations.py` in the `scripts` folder or manually install the following libraries:
